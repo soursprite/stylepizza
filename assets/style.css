@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+    padding:0;
+    margin: 0;
+}
+
+body {
+    background-image: radial-gradient(#212121 5px, transparent 5px),
+        radial-gradient(#fafafa 5px, transparent 5px);
+    background-color: salmon;
+    background-position: 0 0, 50px 50px;
+    background-size: 100px 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 62.5%
+  }
+
+header, main, footer, section {
+    border-radius: 10px;
+    border: 5px solid black;
+    padding: 20px;
+    width: 800px;
+    margin-top: 30px;
+
+}
+header, footer, main {
+    background: lightgreen;
+}
+
+section {
+    width: 46%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+main {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#pizzaView, .optionsMenu {
+    background: lightblue;
+    height: 400px;
+    position: relative;
+}
+
+#pizzaView {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: middle;
+}
+
+#pizzaView div {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+}
+
+ul {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    list-style-type: none;
+    height: 100%;
+    padding: 0;
+}
+
+li {
+    flex: auto;
+    font-size: 2rem;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+li:hover {
+    background: salmon;
+}
+
+#goToOptions {
+    color: red;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.hidden {
+    display:none;
+}
+
+/* ---------- shapes ---------- */
+
+.oval {
+    shape-outside: ellipse(50% 40%);
+    clip-path: ellipse(50% 40%);
+}
