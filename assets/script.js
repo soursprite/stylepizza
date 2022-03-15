@@ -61,6 +61,7 @@ unicornSauceOption.addEventListener('click',function() {unicornSauce.display()})
 
 let crust = document.getElementById('crust')
 let lightcrust = 'rgb(226, 214, 157)' //crustcolor
+let toastycrust = 'rgb(161, 117, 66)'
 
 class Crust {
     constructor(width, height, background, isPan = false) { //num num string
@@ -78,30 +79,42 @@ class Crust {
 
     pan() {
         if (this.isPan !== true) { //norm settings
+            /*
             crust.style.top = '0'
             crust.style.bottom = '0'
             crust.style.left = '0'
             crust.style.right = '0'
             crust.style.margin = 'auto'
+            */
+            //crust.style = `background-color: ${this.background};`
+            crust.style = `background: radial-gradient(ellipse closest-side at ${this.width / 2}px ${this.oldHeight / 2}px, ${lightcrust} 90%, ${toastycrust} 100%);`
+            crust.style.top = `calc(50% - ${this.oldHeight / 2}px)`
+            crust.style.bottom = 'none'
+            crust.style.left = `calc(50% - ${this.width / 2}px)`
+            crust.style.right = 'none'
+            crust.style.margin = '0'
+
             crust.style.borderRadius = '50%';
 
 
         } else {
+            //sauce.style = `background: radial-gradient(ellipse at center, ${this.sauceColor} 0%, ${this.gradientColor4} 80%);`
+            crust.style = `background: radial-gradient(ellipse closest-side at ${this.width / 2}px ${this.oldHeight / 2}px, ${lightcrust} 90%, ${toastycrust} 100%);`
             crust.style.top = `calc(50% - ${this.oldHeight / 2}px)`
             //crust.style.top = `100px`
             crust.style.bottom = 'none'
             crust.style.left = `calc(50% - ${this.width / 2}px)`
             crust.style.right = 'none'
-            crust.style.margin = 'none'
-            crust.style.borderRadius = `50% / ${this.pan()}`;
+            crust.style.margin = '0'
+            crust.style.borderRadius = `50% / ${this.oldHeight / 2}px`;
+
         }
     }
 
     display() {
-        crust.style.background = this.background;
+        this.pan();
         crust.style.width = `${this.width}px`;
         crust.style.height = `${this.height}px`;
-        this.pan();
     }
 }
 
@@ -109,7 +122,7 @@ let basicCrust = new Crust(340, 2/3 * 340, lightcrust)
 basicCrust.display();
 
 let noCrust = new Crust(0,0,'')
-let panCrust = new Crust(340, 2/3 * 340 + 40, lightcrust, true)
+let panCrust = new Crust(340, 2/3 * 340 + 30, lightcrust, true)
 
 let basicCrustOption = getElement('basicCrust')
 let noCrustOption = getElement('noCrust')
