@@ -93,15 +93,13 @@ class Crust {
             crust.style.left = `calc(50% - ${this.width / 2}px)`
             crust.style.right = 'none'
             crust.style.margin = '0'
-
-            crust.style.borderRadius = '50%';
+            crust.style.borderRadius = `50% / ${this.oldHeight / 2}px`;
 
 
         } else {
             //sauce.style = `background: radial-gradient(ellipse at center, ${this.sauceColor} 0%, ${this.gradientColor4} 80%);`
             crust.style = `background: radial-gradient(ellipse closest-side at ${this.width / 2}px ${this.oldHeight / 2}px, ${lightcrust} 90%, ${toastycrust} 100%);`
             crust.style.top = `calc(50% - ${this.oldHeight / 2}px)`
-            //crust.style.top = `100px`
             crust.style.bottom = 'none'
             crust.style.left = `calc(50% - ${this.width / 2}px)`
             crust.style.right = 'none'
@@ -118,7 +116,7 @@ class Crust {
     }
 }
 
-let basicCrust = new Crust(340, 2/3 * 340, lightcrust)
+let basicCrust = new Crust(340, 2/3 * 340 + 15, lightcrust)
 basicCrust.display();
 
 let noCrust = new Crust(0,0,'')
