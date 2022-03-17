@@ -64,53 +64,43 @@ let lightcrust = 'rgb(226, 214, 157)' //crustcolor
 let toastycrust = 'rgb(161, 117, 66)'
 
 class Crust {
-    constructor(width, height, background, isPan = false) { //num num string
+    constructor(width, height, background, special) { //num num string string
         this.height = height
         this.width = width
         this.oldHeight = 2/3 * this.width;
-        this.background = background
-        this.isPan = isPan
+        this.background = background;
+        this.special = special;
     }
 
     get display() {
-        console.log('test')
         return this.display()
     }
 
-    pan() {
-        if (this.isPan !== true) { //norm settings
-            /*
-            crust.style.top = '0'
-            crust.style.bottom = '0'
-            crust.style.left = '0'
-            crust.style.right = '0'
-            crust.style.margin = 'auto'
-            */
-            //crust.style = `background-color: ${this.background};`
-            crust.style = `background: radial-gradient(ellipse closest-side at ${this.width / 2}px ${this.oldHeight / 2}px, ${lightcrust} 90%, ${toastycrust} 100%);`
-            crust.style.top = `calc(50% - ${this.oldHeight / 2}px)`
-            crust.style.bottom = 'none'
-            crust.style.left = `calc(50% - ${this.width / 2}px)`
-            crust.style.right = 'none'
-            crust.style.margin = '0'
-            crust.style.borderRadius = `50% / ${this.oldHeight / 2}px`;
+    get bowlCrust() {
+        return this.bowlCrust()
+    }
+
+    get panCrust() {
+        return this.panCrust()
+    }
+
+    panCrust() {
+        crust.style.borderRadius = `50% / ${this.oldHeight / 2}px`;
+    }
 
 
-        } else {
-            //sauce.style = `background: radial-gradient(ellipse at center, ${this.sauceColor} 0%, ${this.gradientColor4} 80%);`
-            crust.style = `background: radial-gradient(ellipse closest-side at ${this.width / 2}px ${this.oldHeight / 2}px, ${lightcrust} 90%, ${toastycrust} 100%);`
-            crust.style.top = `calc(50% - ${this.oldHeight / 2}px)`
-            crust.style.bottom = 'none'
-            crust.style.left = `calc(50% - ${this.width / 2}px)`
-            crust.style.right = 'none'
-            crust.style.margin = '0'
-            crust.style.borderRadius = `50% / ${this.oldHeight / 2}px`;
-
-        }
+    bowlCrust() {
+        crust.style.borderRadius = `50% / ${this.oldHeight / 2}px ${this.oldHeight / 2}px 50% 50%`;
     }
 
     display() {
-        this.pan();
+        crust.style = `background: radial-gradient(ellipse closest-side at ${this.width / 2}px ${this.oldHeight / 2}px, ${lightcrust} 90%, ${toastycrust} 100%);`
+        crust.style.borderRadius = `50% / ${this.oldHeight / 2}px`;
+        crust.style.top = `calc(50% - ${this.oldHeight / 2}px)`
+        crust.style.bottom = 'none'
+        crust.style.left = `calc(50% - ${this.width / 2}px)`
+        crust.style.right = 'none'
+        crust.style.margin = '0'
         crust.style.width = `${this.width}px`;
         crust.style.height = `${this.height}px`;
     }
@@ -120,16 +110,22 @@ let basicCrust = new Crust(340, 2/3 * 340 + 15, lightcrust)
 basicCrust.display();
 
 let noCrust = new Crust(0,0,'')
-let panCrust = new Crust(340, 2/3 * 340 + 30, lightcrust, true)
+let panCrust = new Crust(340, 2/3 * 340 + 30, lightcrust)
+let bowlCrust = new Crust(340, 2/3 * 340 + 50, lightcrust, 'bowl')
 
 let basicCrustOption = getElement('basicCrust')
 let noCrustOption = getElement('noCrust')
 let panCrustOption = getElement('panCrust')
+let bowlCrustOption = getElement('bowlCrust')
 
 
 basicCrustOption.addEventListener('click',function() {basicCrust.display()})
 noCrustOption.addEventListener('click',function() {noCrust.display()})
-panCrustOption.addEventListener('click',function() {panCrust.display()})
+panCrustOption.addEventListener('click',function() {panCrust.display()
+                                                    panCrust.panCrust()})
+
+bowlCrustOption.addEventListener('click',function() {bowlCrust.display()
+                                                    bowlCrust.bowlCrust()})
 
 //noCrust.display()
 /*
