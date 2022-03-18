@@ -110,9 +110,127 @@ h1 {
     display:none;
 }
 
-/* ---------- shapes ---------- */
+/* ---------- toppings and toppers ---------- */
 
 .oval {
-    shape-outside: ellipse(50% 40%);
-    clip-path: ellipse(50% 40%);
+    /*shape-outside: ellipse(50% 50%);*/
+    clip-path: ellipse(50% 50%);
+    height: calc(2/3 * 310px);
+    width: 310px;
+    z-index: 250;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(15, 20px);
+    grid-template-rows: repeat(10, 20px);
+}
+
+.sauceTopper {
+    color: black;
+    z-index: 260;
+    position: static;
+
+}
+
+.sauceTopper * {
+    margin: 0;
+    padding: 0;
+}
+
+:root {  
+    --width: 31px;
+    --height: 31px;
+    --herbGreen: #24531a;
+    --d-red: #aa1a1a;
+    --herbGreen2: #314709;
+    --sparkleblue: #568df5;
+    --sparklewhite: #d3e2ff;
+    --sparklepurple: #d056f5;
+    --sparklepink: #f07686;
+  }
+
+.sauceTopper {
+    width: var(--width);
+    height: var(--height);
+    clip-path: circle(5px at 0 0);
+  
+  }
+/* noSauceTopper */
+.noSuaceTopper {
+    background: none;
+}
+
+
+/* basicSauceTopper */
+.basicSauceTopper:nth-child(1),
+.basicSauceTopper:nth-child(3n+4) {
+background: radial-gradient(circle at 0 0, transparent 0%, var(--herbGreen) 30%);
+}
+
+.basicSauceTopper:nth-child(2), 
+.basicSauceTopper:nth-child(3n+2) {
+transform: rotate(45deg);
+background-color: radial-gradient(circle at 0 0, transparent 0%, var(--herbGreen2) 30%);
+}
+
+.basicSauceTopper:nth-child(3n+3) {
+transform: rotate(90deg);
+background: radial-gradient(circle at 100% 50%, transparent 0%, var(--d-red) 50%);
+clip-path: circle(8px at 100% 50%);
+}
+
+/* magicSauceTopper */
+@keyframes sparkleBlue {
+    0% {background: var(--sparkleblue);)}
+    50% {background: transparent;)}
+    60% {background: var(--sparklewhite);)}
+    100% {background: var(--sparkleblue);)}
+}
+
+@keyframes sparklePurp {
+    0% {background: var(--sparklepurple);)}
+    50% {background: transparent;)}
+    60% {background: var(--sparklewhite);)}
+    100% {background: var(--sparklepurple);)}
+}
+
+@keyframes sparklePink {
+    0% {background: var(--sparklepink);)}
+    30% {background: transparent;)}
+    50% {background: var(--sparklewhite);)}
+    100% {background: var(--sparklepink);)}
+}
+
+
+.magicSauceTopper:nth-child(1),
+.magicSauceTopper:nth-child(3n+4) {
+    clip-path: circle(3px at 30% 60%);
+    background: radial-gradient(circle at 30% 60%, transparent 0%, var(--sparkleblue) 30%);
+    animation-name: sparkleBlue;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+
+}
+
+
+.magicSauceTopper:nth-child(2), 
+.magicSauceTopper:nth-child(3n+2) {
+    transform: rotate(90deg);
+    background: radial-gradient(circle at 100% 50%, transparent 0%, var(--d-red) 50%);
+    clip-path: circle(2px at 60% 30%);
+    animation-name: sparklePink;
+    animation-duration: 2.3s;
+    animation-iteration-count: infinite;
+    animation-delay: .3s;
+}
+
+.magicSauceTopper:nth-child(3n+3) {
+    transform: rotate(90deg);
+    background: radial-gradient(circle at 100% 50%, transparent 0%, var(--d-red) 50%);
+    clip-path: circle(2px at 50% 50%);
+    animation-name: sparklePurp;
+    animation-duration: 3.8s;
+    animation-iteration-count: infinite;
+    animation-delay: .1s;
 }
